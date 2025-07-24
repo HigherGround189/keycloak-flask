@@ -21,6 +21,8 @@ services:
       KC_DB_PASSWORD: ${POSTGRESQL_PASS}
     ports:
       - 8080:8080
+    depends_on:
+      - postgres
     command:
       - start-dev
 

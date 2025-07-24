@@ -15,7 +15,7 @@ oauth.register(
     client_id=os.getenv("KEYCLOAK_CLIENT_ID"),
     client_secret=os.getenv("KEYCLOAK_CLIENT_SECRET"),
     server_metadata_url=os.getenv("KEYCLOAK_SERVER_METADATA_URL"),
-    client_kwargs={"scope": "openid profile email"},
+    client_kwargs={"scope": "openid profile email"},    
 )
 
 print("FLASK_SECRET_KEY:", os.getenv("FLASK_SECRET_KEY"))
@@ -26,7 +26,7 @@ def index():
     user = session.get("user")
     if user:        
         return render_template_string('''
-            <h1>Welcome, {{ user['name'] }}!</h1>
+            <h1>Welcome, {{ user['name'] }}, {{ user['sub'] }}!</h1>
             <form action="{{ url_for('logout') }}" method="post">
                 <button type="submit">Logout</button>
             </form>
