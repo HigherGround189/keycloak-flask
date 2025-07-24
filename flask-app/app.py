@@ -27,6 +27,7 @@ def index():
     if user:        
         return render_template_string('''
             <h1>Welcome, {{ user['name'] }}, {{ user['sub'] }}!</h1>
+            <h2>All data: {{ user }}</h2>
             <form action="{{ url_for('logout') }}" method="post">
                 <button type="submit">Logout</button>
             </form>
